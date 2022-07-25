@@ -3,13 +3,14 @@ import requests
 from begin import *
 from quiz import *
 
-def create_question(payload):
+def create_question(token, payload):
     payload_json_string = json.dumps(payload)
-    headers = {
-        'Content-Type':'application/json'
+    headers={
+        'Content-Type':'application/json',
+        'Authorization':'Bearer ' + token
     }
     response = requests.post(
-        url + endpoint_question_all,
+        url + endpoint_question,
         data = payload_json_string,
         headers = headers
     )
